@@ -1,20 +1,28 @@
 # ⚡ MyFlashDeal Star Universal
-> **Slogan:** Talk. Pay. Done.
+> **The Global Nexus:** Talk. Pay. Done.
 
-## 🌟 Vision
-An elite, high-fidelity payment and communication interface designed for the global market. Combining the precision of **Sony** standards with the localized excellence of **UAE 🇦🇪** and **Italy 🇮🇹**.
+## 🌟 الرؤية العالمية (Global Vision)
+واجهة دفع واتصال راقية وعالية الدقة مصممة للسوق العالمية، تجمع بين دقة معايير سوني والتميز المحلي لدولة الإمارات العربية المتحدة 🇦🇪 وإيطاليا 🇮🇹.
 
-## 🛠️ Key Features
-* **🤖 Sony-Agent (Gemini Powered):** Interactive chat and multimodal AI response.
-* **🛡️ SHA-256 Security:** Encrypted Sony-Sony protocols for maximum deal safety.
-* **🎵 Whisper-Tech Audio:** High-fidelity, low-ambient "Success Chime" (Multilingual: EN, AR, IT).
-* **📜 Digital Star Certificate:** Instantly generated verification for every successful deal.
-
-## 🚀 Protocols
-1.  **Talk:** Secure voice/text command entry.
-2.  **Pay:** Encrypted token-based transaction.
-3.  **Done:** Instant success confirmation with global certification.
+## 💎 القيم الجوهرية (Core Values)
+1. **السرعة اللحظية (Instanticity):** مستوحاة من وتيرة العمل في دبي وأبوظبي.
+2. **الجمال الوظيفي (Functional Beauty):** دقة التصميم الإيطالي الذي يجعل التكنولوجيا تحفة فنية.
+3. **السيادة الصوتية (Vocal Sovereignty):** تفعيل شعارنا "Talk" عبر معالجة الصوت الطبيعية.
 
 ---
-*Created with Passion & Excellence | 2026 Edition*
 
+## 🛠️ المميزات المتقدمة (New Alpha Update)
+### 🤖 الوكيل الذكي (Multimodal Sony-Agent)
+لم يعد مجرد دردشة كتابية! يدعم النظام الآن:
+* **🎙️ Voice Command (Talk):** تنفيذ الأوامر بالصوت فوراً.
+* **✋ Sign Language Support:** التفاعل عبر لغة الإشارة لخدمة الجميع.
+* **✍️ Text-to-Action:** الدردشة الذكية للمعالجة المعقدة.
+
+### 🚗 نظام Master Alpha (Hardware Integration)
+تم الربط السحابي التمهيدي لبروتوكولات:
+* **💳 FlashDeal SIM:** بطاقات اتصال خاصة لعملائنا لتأمين العمليات بعيداً عن الإنترنت العام.
+* **🔑 Car Device (Smart Key):** تشغيل السيارة وفتحها بمجرد وجود "نجمة فلاشديل" في المحيط.
+* **🔐 Biometric Security:** الربط مع بصمة الإصبع وحركة الجسم compatibility.
+
+---
+*Talk. Pay. Done. | MyFlashDeal Star - The Future is Localized & Global*

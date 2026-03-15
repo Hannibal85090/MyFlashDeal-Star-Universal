@@ -6,10 +6,22 @@ const SecureLogin = () => {
 
   const handleLogin = (method) => {
     let msg = '';
-    if (method === 'fingerprint') msg = 'مرحبًا بك! الدخول بالبصمة.';
-    if (method === 'face') msg = 'مرحبًا بك! الدخول بالتعرف على الوجه.';
-    if (method === 'gesture') msg = 'مرحبًا بك! الدخول بالإشارة.';
-    if (method === 'keypad') msg = 'مرحبًا بك! الدخول بالكود السري.';
+    switch(method) {
+      case 'fingerprint':
+        msg = 'مرحبًا بك! الدخول بالبصمة.';
+        break;
+      case 'face':
+        msg = 'مرحبًا بك! الدخول بالتعرف على الوجه.';
+        break;
+      case 'gesture':
+        msg = 'مرحبًا بك! الدخول بالإشارة.';
+        break;
+      case 'keypad':
+        msg = 'مرحبًا بك! الدخول بالكود السري.';
+        break;
+      default:
+        msg = '';
+    }
     setMessage(msg);
   };
 

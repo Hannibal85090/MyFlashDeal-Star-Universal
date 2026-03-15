@@ -1,70 +1,57 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
-const FlashDealStarHome = () => {
+const SecureLogin = () => {
+  const [message, setMessage] = useState('');
+
+  const handleLogin = (method) => {
+    let msg = '';
+    if (method === 'fingerprint') msg = 'مرحبًا بك! الدخول بالبصمة.';
+    if (method === 'face') msg = 'مرحبًا بك! الدخول بالتعرف على الوجه.';
+    if (method === 'gesture') msg = 'مرحبًا بك! الدخول بالإشارة.';
+    if (method === 'keypad') msg = 'مرحبًا بك! الدخول بالكود السري.';
+    setMessage(msg);
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>My FlashDeal Star</Text>
+      <Text style={styles.title}>FlashDeal Star - Secure Login</Text>
 
-      {/* النجمة المركزية */}
-      <Image source={require('./assets/star.png')} style={styles.star} />
-
-      {/* الرموز الأربعة */}
+      {/* الأيقونات الأربعة */}
       <View style={styles.iconRow}>
-        <Image source={require('./assets/fingerprint.png')} style={styles.icon} />
-        <Image source={require('./assets/face.png')} style={styles.icon} />
+        <TouchableOpacity onPress={() => handleLogin('fingerprint')}>
+          <Image source={require('./assets/images/fingerprint.png')} style={styles.icon} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => handleLogin('face')}>
+          <Image source={require('./assets/images/face.png')} style={styles.icon} />
+        </TouchableOpacity>
       </View>
       <View style={styles.iconRow}>
-        <Image source={require('./assets/gesture.png')} style={styles.icon} />
-        <Image source={require('./assets/keypad.png')} style={styles.icon} />
-      </View>
-
-      {/* شريط اختيار اللغة */}
-      <View style={styles.languageBar}>
-        <TouchableOpacity style={styles.langButton}>
-          <Image source={require('./assets/uk.png')} style={styles.flag} />
-          <Text style={styles.langText}>English</Text>
+        <TouchableOpacity onPress={() => handleLogin('gesture')}>
+          <Image source={require('./assets/images/gesture.png')} style={styles.icon} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.langButton}>
-          <Image source={require('./assets/uae.png')} style={styles.flag} />
-          <Text style={styles.langText}>عربي</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.langButton}>
-          <Image source={require('./assets/france.png')} style={styles.flag} />
-          <Text style={styles.langText}>Français</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.langButton}>
-          <Image source={require('./assets/italy.png')} style={styles.flag} />
-          <Text style={styles.langText}>Italiano</Text>
+        <TouchableOpacity onPress={() => handleLogin('keypad')}>
+          <Image source={require('./assets/images/keypad.png')} style={styles.icon} />
         </TouchableOpacity>
       </View>
 
-      {/* زر SOS وزر اليد */}
-      <View style={styles.footer}>
-        <TouchableOpacity>
-          <Image source={require('./assets/sos.png')} style={styles.sos} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={require('./assets/hand.png')} style={styles.hand} />
-        </TouchableOpacity>
-      </View>
+      {/* رسالة الترحيب */}
+      {message !== '' && (
+        <View style={styles.messageBox}>
+          <Text style={styles.message}>{message}</Text>
+        </View>
+      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#000', alignItems: 'center', justifyContent: 'center' },
-  title: { color: '#fff', fontSize: 24, marginBottom: 20 },
-  star: { width: 120, height: 120, marginBottom: 20 },
-  iconRow: { flexDirection: 'row', justifyContent: 'space-between', width: '80%', marginVertical: 10 },
-  icon: { width: 60, height: 60 },
-  languageBar: { flexDirection: 'row', justifyContent: 'space-around', width: '100%', marginTop: 30 },
-  langButton: { alignItems: 'center' },
-  flag: { width: 40, height: 25 },
-  langText: { color: '#fff', marginTop: 5 },
-  footer: { flexDirection: 'row', justifyContent: 'space-between', width: '90%', position: 'absolute', bottom: 30 },
-  sos: { width: 50, height: 50 },
-  hand: { width: 50, height: 50 },
+  title: { color: '#fff', fontSize: 22, marginBottom: 20 },
+  iconRow: { flexDirection: 'row', justifyContent: 'space-around', width: '80%', marginVertical: 15 },
+  icon: { width: 80, height: 80, marginHorizontal: 10 },
+  messageBox: { marginTop: 30, padding: 15, backgroundColor: '#222', borderRadius: 10 },
+  message: { color: '#FFD700', fontSize: 18, textAlign: 'center' },
 });
 
-export default FlashDealStarHome;
+export default SecureLogin;

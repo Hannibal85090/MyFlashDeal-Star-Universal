@@ -1,103 +1,103 @@
 import streamlit as st
 import time
 
-# 1. إعدادات اللغات (تعدد اللغات الفوري)
+# 1. نظام اللغات المتعددة (عربي، إنجليزي، إيطالي، فرنسي)
 LANG_DICT = {
     'Arabic': {
         'title': "نجم فلاش ديل العالمي 🌟",
-        'agent': "الوكيل الذكي متعدد الأنماط",
-        'modes': "🎤 صوت | 👋 إشارة | ⌨️ كتابة",
-        'saden': "أمان سادن - السند القوي",
-        'product': "سماعات الرأس اللاسلكية (Star Edition)",
+        'agent': "الوكيل الذكي (تحدث. ادفع. تم.)",
+        'saden': "أمان سادن: التوكن المتبادل",
+        'home_car': "التحكم الذكي (المنزل والسيارة) 🏠🚗",
+        'product': "سماعات الرأس (إصدار النجم)",
         'buy': "إبرام الصفقة العالمية 🚀",
         'success': "تمت العملية بنجاح! مبروك شريكي",
-        'motto': "تحدث. ادفع. تم. | Talk. Pay. Done.",
-        'music': "🎶 موسيقى النجاح الهادئة تعمل الآن"
+        'input_label': "اكتب أمرك هنا...",
+        'voice_btn': "ابدأ التحدث 🎤",
+        'sign_btn': "تفعيل كاميرا الإشارة 👋",
+        'sync_btn': "مزامنة التوكن وربط الـ SIM 🛡️",
+        'car_btn': "تشغيل السيارة عن بعد 🔑",
+        'home_btn': "إدارة المنزل الذكي 🏠",
+        'motto': "تحدث. ادفع. تم."
     },
     'English': {
         'title': "My FlashDeal Star Universal 🌟",
-        'agent': "Smart Multimodal Agent",
-        'modes': "🎤 Voice | 👋 Sign | ⌨️ Text",
-        'saden': "Saden Security - Strong Support",
-        'product': "Wireless Headphones (Star Edition)",
+        'agent': "Smart Agent (Talk. Pay. Done.)",
+        'saden': "Saden Security: Mutual Token",
+        'home_car': "Smart Control (Home & Car) 🏠🚗",
+        'product': "Headphones (Star Edition)",
         'buy': "Global Deal Execution 🚀",
         'success': "Process Completed Successfully!",
-        'motto': "Talk. Pay. Done.",
-        'music': "🎶 Calm Success Music is playing"
+        'input_label': "Type your command here...",
+        'voice_btn': "Start Listening 🎤",
+        'sign_btn': "Activate Sign Camera 👋",
+        'sync_btn': "Sync Token & Link SIM 🛡️",
+        'car_btn': "Start Car Remote 🔑",
+        'home_btn': "Manage Smart Home 🏠",
+        'motto': "Talk. Pay. Done."
     },
     'Italiano': {
         'title': "Il Mio FlashDeal Star Universale 🌟",
-        'agent': "Agente Multimodale Intelligente",
-        'modes': "🎤 Voce | 👋 Segno | ⌨️ Testo",
-        'saden': "Sicurezza Saden - Supporto Forte",
-        'product': "Cuffie Wireless (Edizione Star)",
-        'buy': "Concluire l'Affare 🚀",
-        'success': "Operazione completata!",
-        'motto': "Parla. Paga. Fatto.",
-        'music': "🎶 Musica di successo in corso"
+        'agent': "Agente Intelligente",
+        'saden': "Sicurezza Saden: Token Reciproco",
+        'home_car': "Controllo Intelligente (Casa e Auto) 🏠🚗",
+        'product': "Cuffie (Edizione Star)",
+        'buy': "Concludi l'Affare 🚀",
+        'success': "Operazione completata con successo!",
+        'input_label': "Scrivi il tuo comando...",
+        'voice_btn': "Inizia ad ascoltare 🎤",
+        'sign_btn': "Attiva telecamera gestuale 👋",
+        'sync_btn': "Sincronizza Token e SIM 🛡️",
+        'car_btn': "Avvia Auto a distanza 🔑",
+        'home_btn': "Gestisci Casa Intelligente 🏠",
+        'motto': "Parla. Paga. Fatto."
     },
     'Français': {
         'title': "Mon FlashDeal Star Universel 🌟",
-        'agent': "Agent Multimodal Intelligent",
-        'modes': "🎤 Voix | 👋 Signe | ⌨️ Texte",
-        'saden': "Sécurité Saden - Support Fort",
-        'product': "Casque Sans Fil (Édition Star)",
+        'agent': "Agent Intelligent",
+        'saden': "Sécurité Saden: Token Mutuel",
+        'home_car': "Contrôle Intelligent (Maison & Voiture) 🏠🚗",
+        'product': "Casque (Édition Star)",
         'buy': "Conclure l'Accord 🚀",
-        'success': "Opération réussie!",
-        'motto': "Parlez. Payez. Fait.",
-        'music': "🎶 Musique de réussite activée"
+        'success': "Opération terminée avec succès!",
+        'input_label': "Écrivez votre commande...",
+        'voice_btn': "Commencer l'écoute 🎤",
+        'sign_btn': "Activer caméra gestuelle 👋",
+        'sync_btn': "Synchroniser Token et SIM 🛡️",
+        'car_btn': "Démarrer voiture à distance 🔑",
+        'home_btn': "Gérer Maison Intelligente 🏠",
+        'motto': "Parlez. Payez. Fait."
     }
 }
 
-# 2. بناء الواجهة (الوضاحة والشفافية)
 st.set_page_config(page_title="FlashDeal Star", layout="wide")
 
-# اختيار اللغة من الشريط الجانبي ليكون تفاعلياً
 with st.sidebar:
-    st.markdown("### 🌐 Language | اللغة")
-    selected_lang = st.selectbox("", list(LANG_DICT.keys()))
+    selected_lang = st.selectbox("🌐 Choose Language | اختر اللغة", list(LANG_DICT.keys()))
     t = LANG_DICT[selected_lang]
+    st.divider()
+    st.markdown(f"**Slogan:** `{t['motto']}`")
 
-# 3. الهيدر (الوكيل الذكي)
 st.title(t['title'])
-st.subheader(f"🤖 {t['agent']}")
-st.info(t['modes'])
+st.write(f"### 🤖 {t['agent']}")
 
-st.divider()
+# --- قسم التفاعل الشفاف (صوت، إشارة، كتابة) ---
+tab1, tab2, tab3, tab4 = st.tabs(["⌨️ Text", "🎤 Voice", "👋 Sign", "🏠 Smart Hub"])
 
-# 4. الجسم الأساسي (الأمان والمنتج بدون صور خارجية)
-col1, col2 = st.columns([1, 1])
+with tab1:
+    user_text = st.text_input(t['input_label'])
+    if user_text:
+        st.write(f"💬 **Agent:** {user_text} ... Processing")
 
-with col1:
-    st.markdown(f"### 🛡️ {t['saden']}")
-    # استخدام رمز تعبيري ضخم بدلاً من صورة الدرع لضمان النجاح
-    st.markdown("<h1 style='text-align: center; font-size: 100px;'>🛡️</h1>", unsafe_allow_html=True)
-    st.success("✅ Mutual Token: Synchronized")
+with tab2:
+    if st.button(t['voice_btn']):
+        with st.spinner("Listening..."):
+            time.sleep(1.5)
+            st.success("✅ Voice Match Confirmed")
 
-with col2:
-    st.markdown(f"### 🎧 {t['product']}")
-    # استخدام أيقونة للسماعات لتجنب خطأ الـ "0"
-    st.markdown("<h1 style='text-align: center; font-size: 100px;'>🎧</h1>", unsafe_allow_html=True)
-    st.markdown("## **$99.99**")
-    
-    if st.button(t['buy'], type="primary", use_container_width=True):
-        # 5. الاحتفالية وشهادة النجاح
-        st.balloons()
-        with st.container(border=True):
-            st.success(f"🏆 {t['success']}")
-            st.markdown(f"### {t['motto']}")
-            st.write("---")
-            st.write(t['music'])
-            # موسيقى هادئة افتراضية
-            st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
-            
-            # محاكاة ذكاء الوكيل
-            with st.status("FlashDeal Star Processing...", expanded=True):
-                st.write("Verifying Global Biometrics...")
-                time.sleep(1)
-                st.write("Confirming Talk. Pay. Done. Protocol...")
-                time.sleep(1)
-                st.write("Transaction Verified by Saden Security.")
+with tab3:
+    if st.button(t['sign_btn']):
+        st.info("👋 Camera Active: Analyzing Gestures...")
+        time.sleep(1.5)
+        st.success("✅ Gesture Approved")
 
-st.divider()
-st.markdown(f"<p style='text-align: center; opacity: 0.5;'>FlashDeal Universal - {selected_lang}</p>", unsafe_allow_html=True)
+with tab4:

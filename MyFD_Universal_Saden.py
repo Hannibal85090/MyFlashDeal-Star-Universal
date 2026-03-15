@@ -1,69 +1,68 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import streamlit as st
 
-const SecureLogin = () => {
-  const [message, setMessage] = useState('');
+# إعداد الصفحة
+st.set_page_config(page_title="FlashDeal Star - Secure Login", layout="centered")
 
-  const handleLogin = (method) => {
-    let msg = '';
-    switch(method) {
-      case 'fingerprint':
-        msg = 'مرحبًا بك! الدخول بالبصمة.';
-        break;
-      case 'face':
-        msg = 'مرحبًا بك! الدخول بالتعرف على الوجه.';
-        break;
-      case 'gesture':
-        msg = 'مرحبًا بك! الدخول بالإشارة.';
-        break;
-      case 'keypad':
-        msg = 'مرحبًا بك! الدخول بالكود السري.';
-        break;
-      default:
-        msg = '';
+st.title("⭐ FlashDeal Star - Secure Login")
+
+# اختيار اللغة
+languages = {
+    "English": "🇬🇧",
+    "عربي": "🇦🇪",
+    "Français": "🇫🇷",
+    "Italiano": "🇮🇹"
+}
+lang_choice = st.radio("اختر اللغة / Choose Language:", list(languages.keys()), horizontal=True)
+
+# دوال الرسائل حسب اللغة
+def get_message(method, lang):
+    messages = {
+        "English": {
+            "fingerprint": "Welcome! Login with fingerprint.",
+            "face": "Welcome! Login with face recognition.",
+            "gesture": "Welcome! Login with gesture.",
+            "keypad": "Welcome! Login with secret code."
+        },
+        "عربي": {
+            "fingerprint": "مرحبًا بك! الدخول بالبصمة.",
+            "face": "مرحبًا بك! الدخول بالتعرف على الوجه.",
+            "gesture": "مرحبًا بك! الدخول بالإشارة.",
+            "keypad": "مرحبًا بك! الدخول بالكود السري."
+        },
+        "Français": {
+            "fingerprint": "Bienvenue! Connexion par empreinte digitale.",
+            "face": "Bienvenue! Connexion par reconnaissance faciale.",
+            "gesture": "Bienvenue! Connexion par geste.",
+            "keypad": "Bienvenue! Connexion par code secret."
+        },
+        "Italiano": {
+            "fingerprint": "Benvenuto! Accesso con impronta digitale.",
+            "face": "Benvenuto! Accesso con riconoscimento facciale.",
+            "gesture": "Benvenuto! Accesso con gesto.",
+            "keypad": "Benvenuto! Accesso con codice segreto."
+        }
     }
-    setMessage(msg);
-  };
+    return messages[lang][method]
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>FlashDeal Star - Secure Login</Text>
+# خيارات الدخول الآمن
+col1, col2 = st.columns(2)
+with col1:
+    if st.button("🔒 بصمة / Fingerprint"):
+        st.success(get_message("fingerprint", lang_choice))
+    if st.button("🙂 وجه / Face"):
+        st.success(get_message("face", lang_choice))
+with col2:
+    if st.button("🤟 إشارة / Gesture"):
+        st.success(get_message("gesture", lang_choice))
+    if st.button("🔢 كود / Code"):
+        st.success(get_message("keypad", lang_choice))
 
-      {/* الأيقونات الأربعة */}
-      <View style={styles.iconRow}>
-        <TouchableOpacity onPress={() => handleLogin('fingerprint')}>
-          <Image source={require('./assets/images/fingerprint.png')} style={styles.icon} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleLogin('face')}>
-          <Image source={require('./assets/images/face.png')} style={styles.icon} />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.iconRow}>
-        <TouchableOpacity onPress={() => handleLogin('gesture')}>
-          <Image source={require('./assets/images/gesture.png')} style={styles.icon} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleLogin('keypad')}>
-          <Image source={require('./assets/images/keypad.png')} style={styles.icon} />
-        </TouchableOpacity>
-      </View>
-
-      {/* رسالة الترحيب */}
-      {message !== '' && (
-        <View style={styles.messageBox}>
-          <Text style={styles.message}>{message}</Text>
-        </View>
-      )}
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#000', alignItems: 'center', justifyContent: 'center' },
-  title: { color: '#fff', fontSize: 22, marginBottom: 20 },
-  iconRow: { flexDirection: 'row', justifyContent: 'space-around', width: '80%', marginVertical: 15 },
-  icon: { width: 80, height: 80, marginHorizontal: 10 },
-  messageBox: { marginTop: 30, padding: 15, backgroundColor: '#222', borderRadius: 10 },
-  message: { color: '#FFD700', fontSize: 18, textAlign: 'center' },
-});
-
-export default SecureLogin;
+# زر SOS وزر اليد
+st.markdown("---")
+col3, col4 = st.columns(2)
+with col3:
+    if st.button("🚨 SOS"):
+        st.warning("Emergency SOS Activated!")
+with col4:
+    if st.button("✋ Hand"):
+        st.info("Sign language support enabled.")

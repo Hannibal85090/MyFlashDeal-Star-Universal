@@ -101,3 +101,42 @@ with tab3:
         st.success("✅ Gesture Approved")
 
 with tab4:
+    st.markdown(f"### {t['home_car']}")
+    c1, c2 = st.columns(2)
+    with c1:
+        if st.button(t['car_btn']):
+            with st.status("Linking to My FlashDeal Star Device..."):
+                time.sleep(1)
+                st.write("SIM Card Verified...")
+                time.sleep(1)
+                st.success("🚗 Engine Started! | تم تشغيل المحرك")
+    with c2:
+        if st.button(t['home_btn']):
+            st.toast("🏠 Home Lights & AC Adjusted")
+            st.write("✅ Smart Home Connected")
+
+st.divider()
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown(f"### 🛡️ {t['saden']}")
+    st.markdown("<h1 style='text-align: center;'>🛡️</h1>", unsafe_allow_html=True)
+    if st.button(t['sync_btn']):
+        with st.status("Verifying Multi-Layer Security..."):
+            time.sleep(1)
+            st.write("Biometrics Checked...")
+            time.sleep(1)
+            st.success("✅ Secure Token Synchronized")
+
+with col2:
+    st.markdown(f"### 🎧 {t['product']}")
+    st.markdown("<h1 style='text-align: center;'>🎧</h1>", unsafe_allow_html=True)
+    st.markdown("## **$99.99**")
+    
+    if st.button(t['buy'], type="primary", use_container_width=True):
+        st.balloons()
+        with st.container(border=True):
+            st.success(f"🏆 {t['success']}")
+            st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
+            st.info(f"Certificate issued to SIM: **FD-STAR-2026**")

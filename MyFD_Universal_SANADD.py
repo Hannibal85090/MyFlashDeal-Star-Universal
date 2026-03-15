@@ -1,10 +1,17 @@
 import streamlit as st
+import os
 
 # إعداد الصفحة
 st.set_page_config(page_title="FlashDeal Star - Secure Login", layout="centered")
 
-# عرض الصورة النهائية
-st.image("assets/images/star_interface_clean.png", use_column_width=True)
+# المسار للصورة
+image_path = "assets/images/star_interface_clean.png"
+
+# التحقق من وجود الصورة
+if os.path.exists(image_path):
+    st.image(image_path, use_column_width=True)
+else:
+    st.markdown("<h1 style='text-align: center; color: gold;'>Welcome to My FlashDeal Star</h1>", unsafe_allow_html=True)
 
 # اختيار اللغة
 languages = {

@@ -3,7 +3,7 @@ import streamlit as st
 # إعداد الصفحة
 st.set_page_config(page_title="FlashDeal Star - Secure Login", layout="centered")
 
-# عرض الصورة النهائية للواجهة
+# عرض الصورة النهائية
 st.image("assets/images/star_interface_clean.png", use_column_width=True)
 
 # اختيار اللغة

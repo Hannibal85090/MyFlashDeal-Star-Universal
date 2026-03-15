@@ -3,14 +3,8 @@ import streamlit as st
 # إعداد الصفحة
 st.set_page_config(page_title="FlashDeal Star - Secure Login", layout="centered")
 
-# عنوان التطبيق
-st.markdown("<h1 style='text-align:center; color:gold;'>⭐ FlashDeal Star</h1>", unsafe_allow_html=True)
-
-# النجمة المركزية
-try:
-    st.image("./assets/images/star.png", width=180)
-except:
-    st.warning("⚠️ لم يتم العثور على صورة النجمة، تأكد من وجودها في مجلد assets/images.")
+# عرض الصورة النهائية للواجهة
+st.image("assets/images/star_interface_clean.png", use_column_width=True)
 
 # اختيار اللغة
 languages = {
@@ -21,66 +15,70 @@ languages = {
 }
 lang_choice = st.radio("اختر اللغة / Choose Language:", list(languages.keys()), horizontal=True)
 
-# دوال الرسائل حسب اللغة
-def get_message(method, lang):
-    messages = {
-        "English": {
-            "fingerprint": "Welcome! Login with fingerprint.",
-            "face": "Welcome! Login with face recognition.",
-            "gesture": "Welcome! Login with gesture.",
-            "keypad": "Welcome! Login with secret code."
-        },
-        "عربي": {
-            "fingerprint": "مرحبًا بك! الدخول بالبصمة.",
-            "face": "مرحبًا بك! الدخول بالتعرف على الوجه.",
-            "gesture": "مرحبًا بك! الدخول بالإشارة.",
-            "keypad": "مرحبًا بك! الدخول بالكود السري."
-        },
-        "Français": {
-            "fingerprint": "Bienvenue! Connexion par empreinte digitale.",
-            "face": "Bienvenue! Connexion par reconnaissance faciale.",
-            "gesture": "Bienvenue! Connexion par geste.",
-            "keypad": "Bienvenue! Connexion par code secret."
-        },
-        "Italiano": {
-            "fingerprint": "Benvenuto! Accesso con impronta digitale.",
-            "face": "Benvenuto! Accesso con riconoscimento facciale.",
-            "gesture": "Benvenuto! Accesso con gesto.",
-            "keypad": "Benvenuto! Accesso con codice segreto."
-        }
+# الرسائل حسب اللغة
+messages = {
+    "English": {
+        "fingerprint": "Welcome! Login with fingerprint.",
+        "face": "Welcome! Login with face recognition.",
+        "gesture": "Welcome! Login with gesture.",
+        "keypad": "Welcome! Login with secret code.",
+        "sos": "Emergency SOS Activated!",
+        "hand": "Sign language support enabled.",
+        "assistant": "Smart Assistant: Choose the login method that suits you best."
+    },
+    "عربي": {
+        "fingerprint": "مرحبًا بك! الدخول بالبصمة.",
+        "face": "مرحبًا بك! الدخول بالتعرف على الوجه.",
+        "gesture": "مرحبًا بك! الدخول بالإشارة.",
+        "keypad": "مرحبًا بك! الدخول بالكود السري.",
+        "sos": "تم تفعيل نداء الطوارئ!",
+        "hand": "تم تفعيل دعم لغة الإشارة.",
+        "assistant": "الوكيل الذكي: اختر وسيلة الدخول الأنسب لك لضمان الأمان والسهولة."
+    },
+    "Français": {
+        "fingerprint": "Bienvenue! Connexion par empreinte digitale.",
+        "face": "Bienvenue! Connexion par reconnaissance faciale.",
+        "gesture": "Bienvenue! Connexion par geste.",
+        "keypad": "Bienvenue! Connexion par code secret.",
+        "sos": "SOS d'urgence activé!",
+        "hand": "Support de langue des signes activé.",
+        "assistant": "Assistant intelligent : Choisissez la méthode de connexion la plus adaptée."
+    },
+    "Italiano": {
+        "fingerprint": "Benvenuto! Accesso con impronta digitale.",
+        "face": "Benvenuto! Accesso con riconoscimento facciale.",
+        "gesture": "Benvenuto! Accesso con gesto.",
+        "keypad": "Benvenuto! Accesso con codice segreto.",
+        "sos": "SOS di emergenza attivato!",
+        "hand": "Supporto per la lingua dei segni attivato.",
+        "assistant": "Assistente intelligente: Scegli il metodo di accesso più adatto."
     }
-    return messages[lang][method]
+}
 
-# خيارات الدخول الآمن
+# تفاعل الأزرار
+st.markdown("### 🔐 اختر وسيلة الدخول:")
 col1, col2 = st.columns(2)
 with col1:
-    if st.button("🔒 Fingerprint / بصمة"):
-        st.markdown(f"<div style='background-color:rgba(255,215,0,0.2); padding:10px; border-radius:10px; text-align:center;'>{get_message('fingerprint', lang_choice)}</div>", unsafe_allow_html=True)
-    if st.button("🙂 Face / وجه"):
-        st.markdown(f"<div style='background-color:rgba(255,215,0,0.2); padding:10px; border-radius:10px; text-align:center;'>{get_message('face', lang_choice)}</div>", unsafe_allow_html=True)
+    if st.button("🔒 Fingerprint"):
+        st.success(messages[lang_choice]["fingerprint"])
+    if st.button("🙂 Face"):
+        st.success(messages[lang_choice]["face"])
 with col2:
-    if st.button("🤟 Gesture / إشارة"):
-        st.markdown(f"<div style='background-color:rgba(255,215,0,0.2); padding:10px; border-radius:10px; text-align:center;'>{get_message('gesture', lang_choice)}</div>", unsafe_allow_html=True)
-    if st.button("🔢 Code / كود"):
-        st.markdown(f"<div style='background-color:rgba(255,215,0,0.2); padding:10px; border-radius:10px; text-align:center;'>{get_message('keypad', lang_choice)}</div>", unsafe_allow_html=True)
+    if st.button("🤟 Gesture"):
+        st.success(messages[lang_choice]["gesture"])
+    if st.button("🔢 Code"):
+        st.success(messages[lang_choice]["keypad"])
 
-# زر SOS وزر اليد
+# أزرار SOS و اليد
 st.markdown("---")
 col3, col4 = st.columns(2)
 with col3:
     if st.button("🚨 SOS"):
-        st.error("Emergency SOS Activated!")
+        st.error(messages[lang_choice]["sos"])
 with col4:
     if st.button("✋ Hand"):
-        st.info("Sign language support enabled.")
+        st.info(messages[lang_choice]["hand"])
 
-# وكيل ذكي
+# الوكيل الذكي
 st.markdown("### 🤖 Smart Assistant")
-if lang_choice == "عربي":
-    st.write("الوكيل الذكي: يمكنك اختيار وسيلة الدخول المناسبة لك لضمان الأمان والسهولة.")
-elif lang_choice == "English":
-    st.write("Smart Assistant: Choose the login method that suits you best for security and ease.")
-elif lang_choice == "Français":
-    st.write("Assistant intelligent : Choisissez la méthode de connexion qui vous convient le mieux pour la sécurité et la simplicité.")
-elif lang_choice == "Italiano":
-    st.write("Assistente intelligente: Scegli il metodo di accesso più adatto per sicurezza e facilità.")
+st.write(messages[lang_choice]["assistant"])

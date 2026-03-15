@@ -6,8 +6,11 @@ st.set_page_config(page_title="FlashDeal Star - Secure Login", layout="centered"
 # عنوان التطبيق
 st.markdown("<h1 style='text-align:center; color:gold;'>⭐ FlashDeal Star</h1>", unsafe_allow_html=True)
 
-# النجمة المركزية (صورة)
-st.image("./assets/images/star.png", width=150)
+# النجمة المركزية
+try:
+    st.image("./assets/images/star.png", width=180)
+except:
+    st.warning("⚠️ لم يتم العثور على صورة النجمة، تأكد من وجودها في مجلد assets/images.")
 
 # اختيار اللغة
 languages = {
@@ -71,6 +74,13 @@ with col4:
     if st.button("✋ Hand"):
         st.info("Sign language support enabled.")
 
-# وكيل ذكي: اقتراحات إضافية
+# وكيل ذكي
 st.markdown("### 🤖 Smart Assistant")
-st.write("Based on your choice, the assistant will guide you with extra tips for secure login.")
+if lang_choice == "عربي":
+    st.write("الوكيل الذكي: يمكنك اختيار وسيلة الدخول المناسبة لك لضمان الأمان والسهولة.")
+elif lang_choice == "English":
+    st.write("Smart Assistant: Choose the login method that suits you best for security and ease.")
+elif lang_choice == "Français":
+    st.write("Assistant intelligent : Choisissez la méthode de connexion qui vous convient le mieux pour la sécurité et la simplicité.")
+elif lang_choice == "Italiano":
+    st.write("Assistente intelligente: Scegli il metodo di accesso più adatto per sicurezza e facilità.")

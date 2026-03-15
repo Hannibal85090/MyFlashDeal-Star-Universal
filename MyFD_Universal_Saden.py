@@ -1,5 +1,5 @@
-import streamlit as st
-import time
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
 const SecureLogin = () => {
   const [message, setMessage] = useState('');

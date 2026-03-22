@@ -1,45 +1,59 @@
-# MyFlashDeal-Star-Universal/Main_App.py
-
-from Core.Security import MyFlashDealStarSecurity
+import streamlit as st
+import pandas as pd
+from core_logic import flash_deal_star # المحرك الأمني الذي طورناه
+# استيراد الوحدات الخاصة بك (تأكد من صحة المسارات في GitHub)
 from Core.SmartContracts import FlashDealSmartContract
 from Hardware.LogisticsManager import FlashDealLogistics
 from Modules.UX_Controller import FlashDealUX
-from Modules.Inclusivity import UniversalInclusivity
-from Modules.Interactive_QA_Agent import FlashDealSmartAgent
+
+# --- إعدادات الصفحة الاحترافية ---
+st.set_page_config(page_title="FlashDeal Star - Global", layout="wide")
 
 class MyFlashDealStarSystem:
     def __init__(self):
-        # استدعاء كافة العقول والوحدات لعمل تناغم كامل
-        self.security = MyFlashDealStarSecurity()
-        self.logistics = FlashDealLogistics()
         self.ux = FlashDealUX()
-        self.inclusivity = UniversalInclusivity()
-        self.agent = FlashDealSmartAgent()
+        self.logistics = FlashDealLogistics()
         self.slogan = "Talk. Pay. Done."
 
-    def execute_universal_transaction(self, user_id, amount, currency, security_level):
-        # تطبيق مبدأ حرية العميل والشفافية
-        print(f"--- {self.ux.display_welcome_message()} ---")
-        
-        # 1. تخصيص تجربة المستخدم
-        self.ux.set_customer_preferences(security_level, currency)
-        
-        # 2. تفعيل العقد الذكي (من الإبرة إلى السفينة)
-        contract = FlashDealSmartContract("GLOBAL-TXN-2026", user_id, "Merchant-Partner")
-        print(contract.lock_funds(amount, currency))
-        
-        # 3. التدقيق اللوجستي (المحور 12)
-        logistics_report = self.logistics.track_asset("Premium Goods", "TRACK-FD-99")
-        print(logistics_report)
-        
-        # 4. المصادقة النهائية (الأمان الشامل)
-        if contract.validate_execution(logistic_verified=True, quality_check=True):
-            return f"\n✅ {self.slogan} | Transaction Completed Successfully."
-        return "❌ Transaction Paused: Safety or Logistics Standards not met."
+    @st.cache_data(ttl=10)
+    def get_secure_dashboard_data(_self):
+        # استدعاء دالة التنظيف التي وضعناها في core_logic
+        return flash_deal_star.sanitize_vault_data()
 
-# بدء تشغيل النظام العالمي
-if __name__ == "__main__":
-    star_system = MyFlashDealStarSystem()
-    # تجربة عملية: مستخدم يختار أماناً معقداً وعملة مشفرة (بناءً على مبدأ الشمولية)
-    status = star_system.execute_universal_transaction("User_Global_01", 5000, "Crypto_USDT", "Complex")
-    print(status)
+# استدعاء النظام
+star_system = MyFlashDealStarSystem()
+
+# --- واجهة المستخدم (تطوير الصورة ١) ---
+st.title("🛡️ FlashDeal Secure Dashboard")
+st.write(f"**Status:** {star_system.slogan}")
+
+# عرض الجدول بطريقة "محسنة وديناميكية"
+st.subheader("Incoming Secure Inquiries")
+df_display = star_system.get_secure_dashboard_data()
+
+if not df_display.empty:
+    # عرض الجدول بشكل تفاعلي
+    st.dataframe(df_display, use_container_width=True)
+else:
+    st.info("Awaiting international monitoring data...")
+
+# --- منطقة العمليات (Logic Integration) ---
+with st.expander("System Logs & Global Transactions (Confidential)"):
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("Execute Sample Transaction"):
+            # دمج منطق العقود الذكية واللوجستيات الذي وضعته
+            contract = FlashDealSmartContract("GLOBAL-TXN-2026", "User_01", "Partner")
+            log_report = star_system.logistics.track_asset("Premium Goods", "TRACK-FD-99")
+            
+            st.success(f"✅ {log_report}")
+            st.write(f"Slogan: {star_system.slogan}")
+
+    with col2:
+        if st.button("Check for New Responses (Done)"):
+            st.cache_data.clear()
+            st.rerun()
+
+# تذييل الصفحة للمصداقية
+st.markdown("---")
+st.caption("FlashDeal Star - International Monitoring System © 2026")

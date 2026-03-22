@@ -3,7 +3,7 @@ import secrets
 import time
 from dataclasses import dataclass
 from enum import Enum
-import pandas as pd # أضفنا pandas لمعالجة الجداول في الواجهة
+import pandas as pd # لمعالجة الجداول في الواجهة
 
 class TransactionStatus(Enum):
     PENDING = "pending"
@@ -23,28 +23,28 @@ class FlashDealCore:
         self._vault = {}
         self.security_level = security_level
 
-    # --- دالة التنظيف الجديدة (التي طلبناها) ---
     def sanitize_vault_data(self):
-        """تحويل الـ Vault إلى DataFrame نظيف للعرض في الصورة ١"""
+        """تحويل الـ Vault إلى DataFrame نظيف للعرض"""
         if not self._vault:
-            return pd.DataFrame(columns=["Token ID", "Status", "Expiration", "Owner"])
+            return pd.DataFrame(columns=["Token ID", "Status", "Security Level", "Owner", "Bio-Shield"])
         
         data = []
         for tid, token in self._vault.items():
-            # حساب الوقت المتبقي ليكون العرض منطقياً
             remaining = round(token.expiration - time.time(), 2)
             status = "Active" if remaining > 0 else "Expired"
+            
+            # التحقق من وجود الدرع الحيوي لإظهار الرمز 🛡️
+            has_shield = "🛡️ Active" if "bio_shield" in token.metadata else "🔓 Standard"
             
             data.append({
                 "Token ID": tid,
                 "Status": status,
                 "Security Level": self.security_level.upper(),
                 "Owner": token.metadata.get("owner", "Unknown"),
-                "Last Sync": "Just Now"
+                "Bio-Shield": has_shield
             })
         
         df = pd.DataFrame(data)
-        # تنظيف نهائي لضمان الدقة
         df.fillna("N/A", inplace=True)
         return df
 
@@ -63,7 +63,16 @@ class FlashDealCore:
         self._vault[token_id] = new_token
         return token_id
 
-    # بقية الدوال الخاصة بالبصمة الصوتية (Talk. Pay. Done.) كما هي لضمان الاستقرار
+    # --- الميزة التقنية الجديدة: الدرع الحيوي الصامت ---
+    def apply_biometric_shield(self, token_id: str, bio_data: str):
+        """توطين: إضافة طبقة حماية حيوية مشفرة للتوكن"""
+        if token_id in self._vault:
+            # تشفير بيانات البصمة مع معرف التوكن
+            shield_hash = hashlib.sha256(f"{token_id}{bio_data}".encode()).hexdigest()
+            self._vault[token_id].metadata["bio_shield"] = shield_hash[:16]
+            return True
+        return False
+
     def validate_voice_intent(self, voice_signature: str, command: str):
         intent_map = {"pay": True, "send": True, "transfer": True}
         words = command.lower().split()

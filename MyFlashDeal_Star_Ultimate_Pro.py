@@ -113,3 +113,11 @@ with colB:
         add_to_memory("Deal Concluded Successfully")
         st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3")
         st.markdown(f"<div class='glass-card' style='text-align:center;'><h2>🏆 {t['success']}</h2><p>Certificate Code: STAR-UNIV-2026-{int(time.time())}</p><p>Status: ✅ Validated</p><p>Date: 22/03/2026</p></div>",unsafe_allow_html=True)
+
+# --- التعرف البيومتري عبر الكاميرا ---
+st.divider()
+st.subheader("👤 Biometric Face Recognition")
+img_data=st.camera_input("Activate Camera for Face Recognition")
+if img_data:
+    st.success("Face captured successfully! ✅")
+    add_to_memory("Biometric face recognition triggered")

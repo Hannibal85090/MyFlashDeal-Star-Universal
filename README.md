@@ -1,6 +1,17 @@
 # ⚡ MyFlashDeal Star Universal
 > **Global Slogan:** Talk. Pay. Done. | **الشعار العالمي:** تحدث. ادفع. تم.
 
+### For any inquiries, please click on this link: https://copilot.microsoft.com/shares/ewLD6byuucEDfTbS7uAp4 .
+
+...
+###  🔗 Flashdale Star Roadmap Link: https://1drv.ms/b/c/9b0dbb9051111575/IQDWTDoPZEZ2S6ObLfPnBBQNAfOZXK34dG0PugjMtnme9Lw
+Or this : https://1drv.ms/b/c/9b0dbb9051111575/IQDWTDoPZEZ2S6ObLfPnBBQNAfOZXK34dG0PugjMtnme9Lw
+
+...
+###  FlashDeal Terms of Service :
+
+https://copilot.microsoft.com/shares/pages/oj3nqFNGRaHRme2WBuvet .
+
 ---
 
 ## 🌟 The Vision | الرؤية

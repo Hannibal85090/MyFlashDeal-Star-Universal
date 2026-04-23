@@ -1,0 +1,12 @@
+# FlashDeal Sovereign Infrastructure
+google-generativeai
+langchain-google-genai
+langchain
+circle-developer-controlled-wallets
+web3
+python-dotenv
+streamlit
+fastapi
+uvicorn
+pydantic
+

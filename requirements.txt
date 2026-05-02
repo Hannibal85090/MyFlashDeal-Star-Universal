@@ -1,0 +1,10 @@
+streamlit
+yfinance
+langchain
+langchain-google-genai
+google-generativeai
+python-dotenv
+opencv-python-headless
+mediapipe
+SpeechRecognition
+pyttsx3
